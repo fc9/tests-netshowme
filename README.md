@@ -1,216 +1,135 @@
-# Teste Programador PHP - Fabio Cabral
- 
-<p align="center"><a href="https://laravel.com" target="_blank">
-<img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<p align="center"><a href="https://netshow.me/" target="_blank"><img src="./public/images/logo.svg" width="400" alt="netShow.me"></a></p> 
 
-![netShow.me](./public/images/logo.svg){ width: 30% }
+# Página de Contato ~ Fabio Cabral
+[![php 7.3](https://img.shields.io/badge/PHP-7.3-blueviolet.svg)](https://shields.io/)
+[![Laravel 8.0](https://img.shields.io/badge/Laravel-8.0-red.svg)](https://shields.io/)
+[![Vue 2.0](https://img.shields.io/badge/Vue.js-2.0-green.svg)](https://shields.io/)
+![](https://github.com/spatie/laravel-permission/workflows/Run%20Tests/badge.svg?branch=master)
+[![Build with PHPStorm](https://img.shields.io/badge/Build_in-PHPStorm-blue.svg)](https://shields.io/)
 
-<img src="./public/images/logo.svg" width="20%" alt="netShow.me"> 
+> Teste técnico para programador PHP na [netShow.me](https://netshow.me/)
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## Requisitos
 
-# vuelidate
-[![codecov](https://codecov.io/gh/vuelidate/vuelidate/branch/master/graph/badge.svg)](https://codecov.io/gh/vuelidate/vuelidate)
-![gzip size](http://img.badgesize.io/vuelidate/vuelidate/master/dist/vuelidate.min.js.svg?compression=gzip)
+* Git
+* Composer
+* Node.js
+* NPM
+* PHP >= 7.3
+* MySQL Serve >= 5.6 (recomendo 8.0)
+* Extensão Fileinfo PHP
+* Extensão JSON PHP
+* Extensão PHP Mbstring
+* Extensão PDO PHP
 
-> Simple, lightweight model-based validation for Vue.js
+## Instalação
 
-## Sponsors
+### 1. Banco de Dados
 
-### Silver
+No MySQL instalado, crie um esquema de banco de dados para ser usado pela aplicação. Crie também um usuário com permissões de acesso a esta base de dados.
 
-<p align="center">
-  <a href="https://www.storyblok.com/developers?utm_source=newsletter&utm_medium=logo&utm_campaign=vuejs-newsletter" target="_blank">
-    <img src="https://a.storyblok.com/f/51376/3856x824/fea44d52a9/colored-full.png" alt="Storyblok" width="240px">
-  </a>
-</p>
+### 2. Deploy do Projeto
 
-### Bronze
+Execute os comandos a seguir no terminal (caso esteja na plataforma Windows, recomendo utilizar o pacote [Cmder](https://cmder.net/)).
 
-<p align="center">
-  <a href="https://www.vuemastery.com/" target="_blank">
-    <img src="https://cdn.discordapp.com/attachments/258614093362102272/557267759130607630/Vue-Mastery-Big.png" alt="Vue Mastery logo" width="180px">
-  </a>
-  <a href="https://vuejobs.com/" target="_blank">
-    <img src="https://cdn.discordapp.com/attachments/560524372897562636/636900598700179456/vuejobs-logo.png" alt="Vue Mastery logo" width="140px">
-  </a>
-</p>
+> Vou considerar que partimos da pasta ```/var/www``` de um servidor Linux com Apache2. Embora apenas uma instalação do PHP +7.3 seja o suficiente (Por falar nisso, foi feito nesta condição devido a alguns contratempos).
 
-### Features & characteristics:
-* Model based
-* Decoupled from templates
-* Dependency free, minimalistic library
-* Support for collection validations
-* Support for nested models
-* Contextified validators
-* Easy to use with custom validators (e.g. Moment.js)
-* Support for function composition
-* Validates different data sources: Vuex getters, computed values, etc.
+Clone o projeto.
 
-## Demo & docs
+```bash 
+git clone https://github.com/fc9/tests-netshowme.git teste-fabio
+```
 
-[https://vuelidate.js.org/](https://vuelidate.js.org/)
-
-## Installation
+Certifique de ter as permissões de pasta adequadas.
 
 ```bash
-npm install vuelidate --save
+sudo chmod -R 775 /var/www/teste-fabio
+sudo chmod -R 777 /var/www/teste-fabio/public
+sudo chmod -R 777 /var/www/teste-fabio/storage
 ```
 
-You can import the library and use as a Vue plugin to enable the functionality globally on all components containing validation configuration.
+Acesse a pasta raiz do projeto.
 
-```javascript
-import Vue from 'vue'
-import Vuelidate from 'vuelidate'
-Vue.use(Vuelidate)
+```bash
+cd teste-fabio
 ```
 
-Alternatively it is possible to import a mixin directly to components in which it will be used.
+Faça uma cópia do arquivo de configurações de ambiente.
 
-```javascript
-import { validationMixin } from 'vuelidate'
-
-var Component = Vue.extend({
-  mixins: [validationMixin],
-  validations: { ... }
-})
+```bash 
+sudo cp .env.example .env
 ```
 
-The browser-ready bundle is also provided in the package.
+Usando o editor (vi, vim, nano...) da sua preferência, configure o arquivo .env para:
 
-```html
-<script src="vuelidate/dist/vuelidate.min.js"></script>
-<!-- The builtin validators is added by adding the following line. -->
-<script src="vuelidate/dist/validators.min.js"></script>
+* Inserir os dados de acesso à base de dados que criou.
+* Inserir as configurações de email.
+
+> Para teste, recomendo criar uma conta gratuíta no [Mailtrap.io](http://mailtrap.io/) e cópiar os dados de autenticação do email para uso.
+
+```bash
+sudo vim .env
 ```
 
-```javascript
-Vue.use(window.vuelidate.default)
+Gere uma nova chave para a aplicação.
+
+```bash
+php artisan key:generate
 ```
 
-## Basic usage
+Execute as migrações do banco de dados.
 
-For each value you want to validate, you have to create a key inside validations options. You can specify when input becomes dirty by using appropriate event on your input box.
-
-```javascript
-import { required, minLength, between } from 'vuelidate/lib/validators'
-
-export default {
-  data () {
-    return {
-      name: '',
-      age: 0
-    }
-  },
-  validations: {
-    name: {
-      required,
-      minLength: minLength(4)
-    },
-    age: {
-      between: between(20, 30)
-    }
-  }
-}
+```bash
+php artisan migrate --seed
 ```
 
-This will result in a validation object:
+Prepare os estilos e scripts.
 
-```javascript
-$v: {
-  name: {
-    "required": false,
-    "minLength": false,
-    "$invalid": true,
-    "$dirty": false,
-    "$error": false,
-    "$pending": false
-  },
-  age: {
-    "between": false
-    "$invalid": true,
-    "$dirty": false,
-    "$error": false,
-    "$pending": false
-  }
-}
+```bash
+npm run prod
 ```
 
-Checkout the docs for more examples: [https://vuelidate.js.org/](https://vuelidate.js.org/)
+Instale as dependências.
 
-## Contributing
+```bash
+composer install
+
+npm install
+```
+
+Caso não tenho um servidor pré-instalado, execute: 
+```
+php artisan serve
+```
+
+### 3. Pronto!
+
+## Extras
+
+Aplicar testes.
 
 ``` bash
-# install dependencies
-npm install
+# laravel
+php artisan test
 
-# serve with hot reload at localhost:8080
-npm run dev
-
-# create UMD bundle.
-npm run build
-
-# Create docs inside /gh-pages ready to be published
-npm run docs
-
-# run unit tests
-npm run unit
-
-# run all tests
+# Vue.js
 npm test
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-
-## Contributors
-
-### Current
+## Autor
 
 <table>
   <tr>
     <td align="center">
-      <a href="https://github.com/shentao">
-        <img src="https://avatars3.githubusercontent.com/u/3737591?s=460&u=6ef86c71bbbb74efae3c6224390ce9a8cba82272&v=4" width="120px;" alt="Damian Dulisz"/>
+      <a href="https://github.com/fc9">
+        <img src="https://avatars1.githubusercontent.com/u/312719?s=460&u=4dadbe34a7d0b0c527253918e83d28c32a5165e2&v=4" width="120px;" alt="Fabio Cabral"/>
         <br />
-        <sub><b>Damian Dulisz</b></sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="https://github.com/NataliaTepluhina">
-        <img src="https://avatars0.githubusercontent.com/u/18719025?s=460&u=2375ee8b609cb39d681cb318ed138b2f7ffe020e&v=4" width="120px;" alt="Natalia Tepluhina"/>
-        <br />
-        <sub><b>Natalia Tepluhina</b></sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="https://github.com/dobromir-hristov">
-        <img src="https://avatars3.githubusercontent.com/u/9863944?s=460&u=55b074c1589d69d17bb78322dd6900d63b186a34&v=4" width="120px;" alt="Natalia Tepluhina"/>
-        <br />
-        <sub><b>Dobromir Hristov</b></sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="https://github.com/marina-mosti">
-        <img src="https://avatars2.githubusercontent.com/u/14843771?s=460&u=1d11d62c22d38c01d73e6c92587bd567f4e51d27&v=4" width="120px;" alt="Marina Mosti"/>
-        <br />
-        <sub><b>Marina Mosti</b></sub>
+        <sub><b>Fabio Cabral</b></sub>
       </a>
     </td>
   </tr>
 </table>
 
-### Emeriti
+Para obter uma explicação detalhada sobre como as coisas funcionam em **fabiocabralx@gmail.com**.
 
-Here we honor past contributors who have been a major part on this project.
-
-- [Monterail](https://github.com/monterail)
-- [Paweł Grabarz](https://github.com/Frizi)
-
-## License
-
-[MIT](http://opensource.org/licenses/MIT)
+[![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/Naereen/badges/)
