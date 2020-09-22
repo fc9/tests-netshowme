@@ -117,7 +117,7 @@
     <!-- Progressive Enhancements : BEGIN -->
     <style>
         .primary {
-            background: #17bebb;
+            background: #ee3965;
         }
 
         .bg_white {
@@ -148,7 +148,7 @@
 
         .btn.btn-primary {
             border-radius: 2rem;
-            background: #17bebb;
+            background: #ee3965;
             color: #ffffff;
         }
 
@@ -194,7 +194,7 @@
         }
 
         a {
-            color: #17bebb;
+            color: #ee3965;
         }
 
         table {
@@ -207,7 +207,7 @@
         }
 
         .logo h1 a {
-            color: #17bebb;
+            color: #ee3965;
             font-size: 24px;
             font-weight: 700;
             font-family: 'Poppins', sans-serif;

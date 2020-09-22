@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e6e64d9-5449-46df-b435-17fa2dc40f25" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/netshow.me.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/netshow.me.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/emails/contact-notification.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/emails/contact-notification.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Unit/App/Listeners/SendEmailContactNotificationTest.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
