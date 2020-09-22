@@ -85,16 +85,13 @@ Instale as dependências.
 ```bash
 composer install
 
+npm install
+```
+
 Execute as migrações do banco de dados...
 
 ```bash
 php artisan migrate --seed
-```
-
-Gere uma nova chave para a aplicação.
-
-```bash
-php artisan key:generate
 ```
 
 ...e também a tabela para controlar as filas de email.
@@ -110,7 +107,10 @@ Processe o Sass, o CSS e o Javascript.
 npm run prod
 ```
 
-npm install
+Gere uma nova chave para a aplicação.
+
+```bash
+php artisan key:generate
 ```
 
 Caso não tenha um servidor pré-instalado, execute: 
