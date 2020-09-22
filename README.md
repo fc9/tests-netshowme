@@ -94,12 +94,10 @@ Execute as migrações do banco de dados...
 php artisan migrate --seed
 ```
 
-...e também a tabela para controlar as filas de email.
+...~~e também a tabela para controlar as filas de email.~~
  
-```bash
-php artisan queue:table
-php artisan migrate
-```
+~~php artisan queue:table~~
+~~php artisan migrate~~
 
 Processe o Sass, o CSS e o Javascript.
 
