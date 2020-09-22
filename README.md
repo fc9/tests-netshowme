@@ -26,15 +26,15 @@
 
 ### 1. Banco de Dados
 
-No MySQL instalado, crie um esquema de banco de dados para ser usado pela aplicação. Crie também um usuário com permissões de acesso a esta base de dados.
+Com MySQL instalado, crie um esquema de banco de dados para ser usado pela aplicação. Crie também um usuário com permissões de acesso a esta base de dados.
 
 ### 2. Deploy do Projeto
 
 Execute os comandos a seguir no terminal (caso esteja na plataforma Windows, recomendo utilizar o pacote [Cmder](https://cmder.net/)).
 
-> Vou considerar que partimos da pasta ```/var/www``` de um servidor Linux com PHP e MySQL instalados. Embora eu prefira um Apache2/Nginx :sweat_smile:).
+> Vou considerar que partimos da pasta ```/var/www``` de um servidor Linux com PHP e MySQL instalados somente. Embora eu prefira um Apache2/Nginx :sweat_smile:).
 
-Clone o projeto.
+Clone este projeto.
 
 ```bash 
 git clone https://github.com/fc9/tests-netshowme.git teste-fabio
@@ -60,19 +60,21 @@ Faça uma cópia do arquivo de configurações de ambiente.
 sudo cp .env.example .env
 ```
 
-Usando o editor (vi, vim, nano...) da sua preferência, configure o arquivo .env para:
+Usando um editor (vi, vim, nano...) da sua preferência, configure o arquivo .env para:
 
-* Inserir os dados de acesso à base de dados que criou.
-* Inserir as configurações de email.
-* Configurar o uso banco de dados para enfileiramento, ou seja, ```QUEUE_CONNECTION=database```. 
+* Inserir os dados de acesso à base de dados que [criou](#1-banco-de-dados);
+* inserir as configurações de email;
+* e ainda, configurar o uso banco de dados para enfileiramento, ou seja, ```QUEUE_CONNECTION=database```. 
 
-> Para teste, recomendo criar uma conta gratuíta no [Mailtrap.io](http://mailtrap.io/) e cópiar os dados de autenticação do email para uso.
+> Para testes, recomendo criar uma conta gratuíta no [Mailtrap.io](http://mailtrap.io/) e cópiar os dados de autenticação do email para uso.
 
 ```bash
 sudo vim .env
 ```
 
 Configure também o email para onde as mensagens de contato serão enviadas.
+
+> Há outras configurações opcionais, edite somente se souber o que esta fazendo.
 
 ```bash
 sudo vim config/contact.php
@@ -84,20 +86,20 @@ Gere uma nova chave para a aplicação.
 php artisan key:generate
 ```
 
-Execute as migrações do banco de dados.
+Execute as migrações do banco de dados...
 
 ```bash
 php artisan migrate --seed
 ```
 
-Também a tabela para controlar as filas de email
+...e também a tabela para controlar as filas de email.
  
 ```bash
 php artisan queue:table
 php artisan migrate
 ```
 
-Processe o Sass, o CSS e o Javascript
+Processe o Sass, o CSS e o Javascript.
 
 ```bash
 npm run prod
@@ -111,7 +113,7 @@ composer install
 npm install
 ```
 
-Caso não tenho um servidor pré-instalado, execute: 
+Caso não tenha um servidor pré-instalado, execute: 
 ```
 php artisan serve
 ```
@@ -122,14 +124,18 @@ php artisan serve
 
 ## Extras
 
-Os e-mails são enviados para fila de trabalhos. Para que sejam enviados será necessário executar o worker:
+### Filas de email
+
+Os e-mails são enviados para uma fila de trabalhos para tornar a usabilidade mais agradável. Todavia, para que os emails sejam enviados será necessário executar o worker:
 
 ```bash
 php artisan queue:work
 ``` 
-> Observação: você pode usar outros drivers para trabalhar com filas no Laravel, mas não abordarei a configuração de cada um aqui.
+> Observação: Esta escolha foi circunstancial, poderíamos usar outros drivers para trabalhar com as filas no Laravel, mas tomaria muito tempo abordando a configuração de cada um aqui.
 
-Aplicar testes.
+### Testes
+
+Para rodar os testes.
 
 ``` bash
 # laravel
@@ -153,6 +159,6 @@ npm test
   </tr>
 </table>
 
-Para obter uma explicação detalhada sobre como as coisas funcionam em **fabiocabralx@gmail.com**.
+Para obter uma explicação detalhada sobre como as coisas funcionam mande um "oi" paragit  **fabiocabralx@gmail.com**.
 
 [![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/Naereen/badges/)
