@@ -80,16 +80,21 @@ Configure também o email para onde as mensagens de contato serão enviadas.
 sudo vim config/contact.php
 ```
 
-Gere uma nova chave para a aplicação.
+Instale as dependências.
 
 ```bash
-php artisan key:generate
-```
+composer install
 
 Execute as migrações do banco de dados...
 
 ```bash
 php artisan migrate --seed
+```
+
+Gere uma nova chave para a aplicação.
+
+```bash
+php artisan key:generate
 ```
 
 ...e também a tabela para controlar as filas de email.
@@ -104,11 +109,6 @@ Processe o Sass, o CSS e o Javascript.
 ```bash
 npm run prod
 ```
-
-Instale as dependências.
-
-```bash
-composer install
 
 npm install
 ```
