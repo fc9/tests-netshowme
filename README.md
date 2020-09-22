@@ -1,5 +1,3 @@
-<p align="center"><a href="https://netshow.me/" target="_blank"><img src="./public/images/logo.svg" width="400" alt="netShow.me"></a></p> 
-
 # Página de Contato ~ Fabio Cabral
 [![php 7.3](https://img.shields.io/badge/PHP-7.3-blueviolet.svg)](https://shields.io/)
 [![Laravel 8.0](https://img.shields.io/badge/Laravel-8.0-red.svg)](https://shields.io/)
@@ -8,6 +6,8 @@
 [![Build with PHPStorm](https://img.shields.io/badge/Build_in-PHPStorm-blue.svg)](https://shields.io/)
 
 > Teste técnico para programador PHP na [netShow.me](https://netshow.me/)
+
+<p align="center"><a href="https://netshow.me/" target="_blank"><img src="./public/images/logo.svg" width="400" alt="netShow.me"></a></p> 
 
 ## Requisitos
 
@@ -32,7 +32,7 @@ No MySQL instalado, crie um esquema de banco de dados para ser usado pela aplica
 
 Execute os comandos a seguir no terminal (caso esteja na plataforma Windows, recomendo utilizar o pacote [Cmder](https://cmder.net/)).
 
-> Vou considerar que partimos da pasta ```/var/www``` de um servidor Linux com Apache2. Embora apenas uma instalação do PHP +7.3 seja o suficiente (Por falar nisso, foi feito nesta condição devido a alguns contratempos).
+> Vou considerar que partimos da pasta ```/var/www``` de um servidor Linux com PHP e MySQL instalados. Embora eu prefira um Apache2/Nginx :sweat_smile:).
 
 Clone o projeto.
 
@@ -64,11 +64,18 @@ Usando o editor (vi, vim, nano...) da sua preferência, configure o arquivo .env
 
 * Inserir os dados de acesso à base de dados que criou.
 * Inserir as configurações de email.
+* Configurar o uso banco de dados para enfileiramento, ou seja, ```QUEUE_CONNECTION=database```. 
 
 > Para teste, recomendo criar uma conta gratuíta no [Mailtrap.io](http://mailtrap.io/) e cópiar os dados de autenticação do email para uso.
 
 ```bash
 sudo vim .env
+```
+
+Configure também o email para onde as mensagens de contato serão enviadas.
+
+```bash
+sudo vim config/contact.php
 ```
 
 Gere uma nova chave para a aplicação.
@@ -83,7 +90,14 @@ Execute as migrações do banco de dados.
 php artisan migrate --seed
 ```
 
-Prepare os estilos e scripts.
+Também a tabela para controlar as filas de email
+ 
+```bash
+php artisan queue:table
+php artisan migrate
+```
+
+Processe o Sass, o CSS e o Javascript
 
 ```bash
 npm run prod
@@ -102,9 +116,18 @@ Caso não tenho um servidor pré-instalado, execute:
 php artisan serve
 ```
 
+> Observação: caso tenha um servidor HTTP, será necessário mudar o diretório raiz da servidor para a pasta "**public/**" do projeto.
+
 ### 3. Pronto!
 
 ## Extras
+
+Os e-mails são enviados para fila de trabalhos. Para que sejam enviados será necessário executar o worker:
+
+```bash
+php artisan queue:work
+``` 
+> Observação: você pode usar outros drivers para trabalhar com filas no Laravel, mas não abordarei a configuração de cada um aqui.
 
 Aplicar testes.
 
